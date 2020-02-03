@@ -34,7 +34,7 @@ unittest(route_params_ok) {
   MockStream stream(request);
   Application app;
 
-  app.get("/route/:test1/params/:test2", &handler);
+  app.get("/route/:test1/params/:test2", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -55,7 +55,7 @@ unittest(route_params_value_too_long) {
   MockStream stream(request);
   Application app;
 
-  app.get("/route/:test1/params/:test2", &handler);
+  app.get("/route/:test1/params/:test2", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -77,7 +77,7 @@ unittest(router_route_params) {
   Router router("/router");
   Application app;
 
-  router.get("/route/:test1/params/:test2", &handler);
+  router.get("/route/:test1/params/:test2", handler);
   app.route(&router);
 
   app.process(&stream);

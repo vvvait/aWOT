@@ -34,7 +34,7 @@ unittest(headers_ok) {
  
   app.header("Test1", test1Header, 6);
   app.header("Test2", test2Header, 6);
-  app.get("/", &handler);
+  app.get("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -63,7 +63,7 @@ unittest(same_header_multiple_times) {
  
   app.header("Test1", test1Header, 12);
   app.header("Test2", test2Header, 6);
-  app.get("/", &handler);
+  app.get("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -91,7 +91,7 @@ unittest(headers_field_too_large) {
  
   app.header("Test1", test1Header, 6);
   app.header("Test2", test2Header, 6);
-  app.get("/", &handler);
+  app.get("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());

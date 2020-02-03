@@ -35,7 +35,7 @@ unittest(query_params_ok) {
   MockStream stream(request);
   Application app;
 
-  app.get("/query", &handler);
+  app.get("/query", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -56,7 +56,7 @@ unittest(query_params_value_too_long) {
   MockStream stream(request);
   Application app;
 
-  app.get("/query", &handler);
+  app.get("/query", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -78,7 +78,7 @@ unittest(router_query_params) {
   Router router("/router");
   Application app;
 
-  router.get("/query", &handler);
+  router.get("/query", handler);
   app.route(&router);
 
   app.process(&stream);

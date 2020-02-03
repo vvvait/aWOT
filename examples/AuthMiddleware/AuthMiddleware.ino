@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <WiFi.h>
 #include <aWOT.h>
 
@@ -79,7 +80,7 @@ void setup() {
 
   app.header("Authorization", authBuffer, 200);
   app.use(&auth);
-  app.get("/", &indexCmd);
+  app.get("/", indexCmd);
 }
 
 void loop() {

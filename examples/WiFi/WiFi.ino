@@ -25,7 +25,7 @@ void setup() {
   }
   Serial.println(WiFi.localIP());
 
-  app.get("/", &index);
+  app.get("/", index);
   server.begin();
 }
   

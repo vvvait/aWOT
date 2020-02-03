@@ -23,6 +23,7 @@ Arduino web server library.
 ## Examples
 ### Hello World
 ```cpp
+#include <Arduino.h>
 #include <WiFi.h>
 #include <aWOT.h>
 
@@ -43,7 +44,7 @@ void setup() {
   }
   Serial.println(WiFi.localIP());
 
-  app.get("/", &index);
+  app.get("/", index);
   server.begin();
 }
 
@@ -68,7 +69,7 @@ void queryParams(Request &req, Response &res) {
 
 void setup() {
   // other setup ...
-  app.get("/cats", &queryParams);
+  app.get("/cats", queryParams);
 }
 ```
 
@@ -84,7 +85,7 @@ void routeParams(Request &req, Response &res) {
 
 void setup() {
   // other setup
-  app.get("/cats/:catId", &routeParams);
+  app.get("/cats/:catId", routeParams);
 }
 ```
 
@@ -105,7 +106,7 @@ void postParams(Request &req, Response &res) {
 void setup() {
   // other setup
 
-  app.post("/form", &postParams);
+  app.post("/form", postParams);
 }
 ```
 
@@ -126,7 +127,7 @@ void setup() {
 
   // header names are handled case insensitive
   app.header("User-Agent", userAgentBuffer, 200); 
-  app.get("/useragent", &headers);
+  app.get("/useragent", headers);
 }
 ```
 
@@ -152,9 +153,9 @@ void nyannyan(Request &req, Response &res) {
 void setup() {
   // other setup
 
-  cats.get("/long", &looooong);
-  cats.get("/ceiling", &ceiling);
-  cats.get("/nyan", &nyannyan);
+  cats.get("/long", looooong);
+  cats.get("/ceiling", ceiling);
+  cats.get("/nyan", nyannyan);
 
   app.route(&cats);
 }

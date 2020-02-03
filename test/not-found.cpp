@@ -22,7 +22,7 @@ unittest(root_path) {
   MockStream stream(request);
   Application app;
 
-  app.get("/", &handler);
+  app.get("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());

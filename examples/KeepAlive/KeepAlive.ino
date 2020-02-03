@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <WiFi.h>
 #include <aWOT.h>
 
@@ -29,8 +30,8 @@ void setup() {
   }
   Serial.println(WiFi.localIP());
 
-  app.use(&keepAlive);
-  app.get("/", &index);
+  app.use(keepAlive);
+  app.get("/", index);
   server.begin();
 }
 

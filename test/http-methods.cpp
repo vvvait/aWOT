@@ -23,7 +23,7 @@ unittest(http_methods_get) {
   MockStream stream(request);
   Application app;
 
-  app.get("/test", &handler);
+  app.get("/test", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -37,7 +37,7 @@ unittest(http_methods_post) {
   MockStream stream(request);
   Application app;
 
-  app.post("/test", &handler);
+  app.post("/test", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -51,7 +51,7 @@ unittest(http_methods_put) {
   MockStream stream(request);
   Application app;
 
-  app.put("/test", &handler);
+  app.put("/test", handler);
   app.process(&stream);
   assertEqual(expected, stream.response());
 }
@@ -64,7 +64,7 @@ unittest(http_methods_patch) {
   MockStream stream(request);
   Application app;
 
-  app.patch("/test", &handler);
+  app.patch("/test", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -78,7 +78,7 @@ unittest(http_methods_delete) {
   MockStream stream(request);
   Application app;
 
-  app.del("/test", &handler);
+  app.del("/test", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -92,7 +92,7 @@ unittest(http_methods_options) {
   MockStream stream(request);
   Application app;
 
-  app.options("/test", &handler);
+  app.options("/test", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -113,7 +113,7 @@ unittest(http_methods_head) {
   MockStream stream(request);
   Application app;
 
-  app.get("/test", &handler);
+  app.get("/test", handler);
   app.process(&stream);
 
   assertEqual(noBody, stream.response());

@@ -26,7 +26,7 @@ unittest(timeout_during_verb) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -39,7 +39,7 @@ unittest(timeout_after_verb) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -52,7 +52,7 @@ unittest(timeout_durin_url) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -65,7 +65,7 @@ unittest(timeout_after_url) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -78,7 +78,7 @@ unittest(timeout_during_http) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -91,7 +91,7 @@ unittest(timeout_after_http) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -104,7 +104,7 @@ unittest(timeout_during_slash) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -117,7 +117,7 @@ unittest(timeout_during_major_version) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -130,7 +130,7 @@ unittest(timeout_during_version_dot) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -143,7 +143,7 @@ unittest(timeout_during_version_minor) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -156,7 +156,7 @@ unittest(timeout_during_linebreak) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -170,7 +170,7 @@ unittest(timeout_during_header_name) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -184,7 +184,7 @@ unittest(timeout_after_header_name) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -198,7 +198,7 @@ unittest(timeout_during_semicolon) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -212,7 +212,7 @@ unittest(timeout_after_semicolon) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -226,7 +226,7 @@ unittest(timeout_during_header_value) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -240,7 +240,7 @@ unittest(timeout_after_header_value) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -255,7 +255,7 @@ unittest(timeout_during_body) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -278,7 +278,7 @@ unittest(no_timeout) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(ok, stream.response());

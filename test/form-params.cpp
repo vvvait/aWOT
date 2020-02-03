@@ -35,7 +35,7 @@ unittest(form_params) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -58,7 +58,7 @@ unittest(form_params_name_too_long) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -81,7 +81,7 @@ unittest(form_params_value_too_long) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &handler);
+  app.post("/", handler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());

@@ -24,10 +24,11 @@
 #define AWOT_H_
 
 #include <Arduino.h>
+#include "Stream.h"
+
 #include <stdlib.h>
 #include <string.h>
-
-#include "Stream.h"
+#include <functional>
 
 #define CRLF "\r\n"
 
@@ -206,32 +207,32 @@ class Router {
   friend class Application;
 
  public:
-  typedef void Middleware(Request& request, Response& response);
+  typedef std::function<void(Request& request, Response& response)> Middleware;
 
   Router(const char* urlPrefix = "");
   ~Router();
 
-  void all(const char* path, Middleware* middleware);
-  void del(const char* path, Middleware* middleware);
-  void get(const char* path, Middleware* middleware);
-  void options(const char* path, Middleware* middleware);
-  void patch(const char* path, Middleware* middleware);
-  void post(const char* path, Middleware* middleware);
-  void put(const char* path, Middleware* middleware);
+  void all(const char* path, Middleware middleware);
+  void del(const char* path, Middleware middleware);
+  void get(const char* path, Middleware middleware);
+  void options(const char* path, Middleware middleware);
+  void patch(const char* path, Middleware middleware);
+  void post(const char* path, Middleware middleware);
+  void put(const char* path, Middleware middleware);
   void route(Router* router);
-  void use(Middleware* middleware);
+  void use(Middleware middleware);
 
  private:
   struct MiddlewareNode {
     const char* path;
-    Middleware* middleware;
+    Middleware middleware;
     Router* router;
     Request::MethodType type;
     MiddlewareNode* next;
   };
 
   void m_addMiddleware(Request::MethodType type, const char* path,
-                       Middleware* middleware);
+                       Middleware middleware);
   void m_mountMiddleware(MiddlewareNode *tail);
   void m_setNext(Router* next);
   Router* m_getNext();
@@ -250,19 +251,19 @@ class Application {
 
   static int strcmpi(const char* s1, const char* s2);
 
-  void all(const char* path, Router::Middleware* middleware);
-  void del(const char* path, Router::Middleware* middleware);
-  void get(const char* path, Router::Middleware* middleware);
+  void all(const char* path, Router::Middleware middleware);
+  void del(const char* path, Router::Middleware middleware);
+  void get(const char* path, Router::Middleware middleware);
   void header(const char* name, char* buffer, int bufferLength);
-  void options(const char* path, Router::Middleware* middleware);
-  void patch(const char* path, Router::Middleware* middleware);
-  void post(const char* path, Router::Middleware* middleware);
-  void put(const char* path, Router::Middleware* middleware);
+  void options(const char* path, Router::Middleware middleware);
+  void patch(const char* path, Router::Middleware middleware);
+  void post(const char* path, Router::Middleware middleware);
+  void put(const char* path, Router::Middleware middleware);
   void process(Stream* client);
   void process(Stream* client, char* buffer, int bufferLength);
   void route(Router* router);
   void setTimeout(unsigned long timeoutMillis);
-  void use(Router::Middleware* middleware);
+  void use(Router::Middleware middleware);
 
  private:
   void m_process();

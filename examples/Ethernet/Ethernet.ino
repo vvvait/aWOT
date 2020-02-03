@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <SPI.h>
 #include <Ethernet.h>
 #include <aWOT.h>
@@ -37,7 +38,7 @@ void setup() {
   }
 
   // mount the handler to the default router
-  app.get("/", &indexCmd);
+  app.get("/", indexCmd);
 }
 
 void loop(){

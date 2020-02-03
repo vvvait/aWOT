@@ -35,7 +35,7 @@ unittest(req_available) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &availableHandler);
+  app.post("/", availableHandler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -58,7 +58,7 @@ unittest(req_available_less_than_content_length) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &availableHandler);
+  app.post("/", availableHandler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -82,7 +82,7 @@ unittest(req_read_string) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &readStringHandler);
+  app.post("/", readStringHandler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -106,7 +106,7 @@ unittest(req_read_bytes) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &readBytesHandler);
+  app.post("/", readBytesHandler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -129,7 +129,7 @@ unittest(req_read_bytes_timeout) {
   MockStream stream(request);
   Application app;
 
-  app.post("/", &readBytesHandler);
+  app.post("/", readBytesHandler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());

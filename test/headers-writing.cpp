@@ -41,7 +41,7 @@ unittest(custom_headers) {
   MockStream stream(request);
   Application app;
 
-  app.get("/", &customHeadersHandler);
+  app.get("/", customHeadersHandler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -62,7 +62,7 @@ unittest(content_type) {
   MockStream stream(request);
   Application app;
 
-  app.get("/", &contentTypeHandler);
+  app.get("/", contentTypeHandler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
@@ -98,7 +98,7 @@ unittest(connection_keep_alive) {
   MockStream stream(request);
   Application app;
 
-  app.get("/", &keepAliveHandler);
+  app.get("/", keepAliveHandler);
   app.process(&stream);
   app.process(&stream);
 
@@ -121,7 +121,7 @@ unittest(connection_keep_alive_content_length) {
   MockStream stream(request);
   Application app;
 
-  app.get("/", &keepAliveContentLengthHandler);
+  app.get("/", keepAliveContentLengthHandler);
   app.process(&stream);
 
   assertEqual(expected, stream.response());
