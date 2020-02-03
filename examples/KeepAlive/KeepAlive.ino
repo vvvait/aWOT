@@ -1,4 +1,4 @@
-#include <Arduino.h>
+#include <functional>
 #include <Ethernet.h>
 #include <aWOT.h>
 

@@ -1,4 +1,4 @@
-#include <Arduino.h>
+#include <functional>
 #include <WiFi.h>
 #include <aWOT.h>
 
