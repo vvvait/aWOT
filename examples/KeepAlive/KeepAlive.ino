@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <WiFi.h>
+#include <Ethernet.h>
 #include <aWOT.h>
 
 #define MAX_CLIENTS 16
@@ -16,7 +16,7 @@ void keepAlive(Request &req, Response &res) {
   res.set("Connection", "keep-alive");
 }
 
-void index(Request &req, Response &res) {
+void indexCmd(Request &req, Response &res) {
   res.print("Hello World!");
 }
 
@@ -31,7 +31,7 @@ void setup() {
   Serial.println(WiFi.localIP());
 
   app.use(keepAlive);
-  app.get("/", index);
+  app.get("/", indexCmd);
   server.begin();
 }
 

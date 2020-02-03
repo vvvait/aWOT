@@ -11,7 +11,7 @@
 WiFiServer server(80);
 Application app;
   
-void index(Request &req, Response &res) {
+void indexCmd(Request &req, Response &res) {
   res.print("Hello World!");
 }
   
@@ -25,7 +25,7 @@ void setup() {
   }
   Serial.println(WiFi.localIP());
 
-  app.get("/", index);
+  app.get("/", indexCmd);
   server.begin();
 }
   
