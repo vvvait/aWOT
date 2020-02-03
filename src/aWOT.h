@@ -28,6 +28,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+
 #include <functional>
 
 #define CRLF "\r\n"
@@ -66,6 +67,9 @@
 #endif
 
 #ifdef _VARIANT_ARDUINO_DUE_X_
+namespace std {
+    void __throw_bad_function_call() {throw bad_function_call("invalid function called");}
+}
 #define pgm_read_byte(ptr) (unsigned char)(*ptr)
 #endif
 
