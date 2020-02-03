@@ -1,4 +1,3 @@
-#include <functional>
 #include <WiFi.h>
 #include <SPIFFS.h>
 #include <aWOT.h>

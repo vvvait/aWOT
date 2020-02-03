@@ -29,8 +29,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <functional>
-
 #define CRLF "\r\n"
 
 #if defined(__AVR_ATmega328P__) || defined(__AVR_Atmega32U4__) || \
