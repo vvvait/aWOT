@@ -62,8 +62,10 @@ void Response::beginHeaders() {
 
 int Response::bytesSent() { return m_bytesSent; }
 
-void Response::end() {
+void Response::end(bool post) {
   m_ended = true;
+  if (post)
+    m_headersSent = true;
 }
 
 void Response::endHeaders() {
@@ -145,11 +147,11 @@ void Response::setDefaults() {
   if (!m_contentTypeSet) {
     set("Content-Type", "text/plain");
   }
-
+/*
   if (m_keepAlive && !m_contentLenghtSet) {
     set("Transfer-Encoding", "chunked");
   }
-
+*/
   if (!m_keepAlive) {
     m_contentLenghtSet = true;
     set("Connection", "close");
