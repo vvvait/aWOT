@@ -114,7 +114,7 @@ class Response : public Print {
   int availableForWrite();
   int bytesSent();
   void beginHeaders();
-  void end();
+  void end(bool post = false);
   void endHeaders();
   bool ended();
   void flush();
@@ -317,6 +317,7 @@ class Application {
   void process(Stream* stream, void* context = NULL);
   void process(Stream* stream, char* urlbuffer, int urlBufferLength, void* context = NULL);
   void process(Stream* stream, char* urlBuffer, int urlBufferLength, uint8_t * writeBuffer, int writeBufferLength, void* context = NULL);
+  
 
   void setTimeout(unsigned long timeoutMillis);
   void use(const char* path, Router* router);
